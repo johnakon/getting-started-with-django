@@ -1,7 +1,7 @@
 
 # Getting started with Django
 
-This is a tutorial I am following on youtube -  "Getting Started With Django", found on YouTube and JustDjango
+This is a tutorial I am following -  "Getting Started With Django", found on YouTube and JustDjango
 
 ---
 

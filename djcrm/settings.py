@@ -119,3 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# tell django we have our own custom user model
+
+AUTH_USER_MODEL = 'leads.User'

@@ -1,11 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-# import the leads model
-from .models import Lead
+from .models import Lead, Agent
 from .forms import LeadForm
 
-
-# function based views
 
 # lead list
 def lead_list(request):
@@ -23,7 +20,6 @@ def lead_list(request):
 # a primary key is also passed
 def lead_detail(request, pk):
     # print(pk)
-    # use pk to retrieve specific row using object manager
     lead = Lead.objects.get(id=pk)
     # print(lead)
     context = {
@@ -32,11 +28,32 @@ def lead_detail(request, pk):
     return render(request, "leads/lead_detail.html", context)
 
 
-# creating a lead from a form
+# creating a lead from 
 def lead_create(request):
+    form = LeadForm()  # empty form instantiation
+    # print(request.POST)
 
-    print(request.POST)
+    # check if method is POST 
+    if request.method == "POST":
+        print("Receiving a post request")
+        form = LeadForm(request.POST)
+        # check if form is valid
+        if form.is_valid():
+            print("form is valid")
+            print(form.cleaned_data)   # clean data dispaly 
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            age = form.cleaned_data['age']
+            agent = Agent.objects.first()  # first row in table  -> similar to .get
+            Lead.objects.create(
+                first_name = first_name,
+                last_name = last_name,
+                age = age,
+                agent = agent
+            )
+            print("Lead has been created")
+            return redirect("/leads")
     context = {
-        "form" : LeadForm
+        "form" : form
     }
     return render(request, "leads/lead_create.html", context)

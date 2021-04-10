@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+# import the leads model
+from .models import Lead
 
-# Create your views here.
 
 # function based views
 def home_page(request):
+
+    # fetch all leads and store in a variable leads
+    leads = Lead.objects.all()
+
     context={
-        "name": "John",
-        "age": 35
+        "leads" : leads
     }
-    # return render(request, "leads/home_page.html")
     return render(request, "second_page.html", context)

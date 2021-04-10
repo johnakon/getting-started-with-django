@@ -10,11 +10,8 @@
     <a href="/leads">Go back</a>
     <hr />
     <h1>Update lead: {{ lead.first_name }} {{ lead.last_name }}</h1>
-    <!-- {{ form}} -->
-    <!-- {{ form.as_p }} -->
 
     <form method="post">
-        <!-- for method post, we add csrf_token -->
         {% csrf_token %}
         {{ form.as_p }}
 

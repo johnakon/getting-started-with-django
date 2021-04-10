@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  lead_list, lead_detail, lead_create
+from .views import  lead_list, lead_detail, lead_create, lead_update
 
 app_name = "leads"
 
@@ -9,5 +9,6 @@ urlpatterns =[
     # path('create/', lead_create),
     # use pk to uniquely identify a lead
     path('<int:pk>/', lead_detail),
-    path('create/', lead_create)
+    path('<int:pk>/update/', lead_update),
+    path('create/', lead_create),
 ]

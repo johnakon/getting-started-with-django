@@ -5,6 +5,9 @@ from django.http import HttpResponse
 
 # function based views
 def home_page(request):
-    # return HttpResponse("Hello world")
+    context={
+        "name": "John",
+        "age": 35
+    }
     # return render(request, "leads/home_page.html")
-    return render(request, "second_page.html")
+    return render(request, "second_page.html", context)

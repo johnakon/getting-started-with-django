@@ -5,7 +5,7 @@ from .models import Lead
 
 
 # function based views
-def home_page(request):
+def lead_list(request):
 
     # fetch all leads and store in a variable leads
     leads = Lead.objects.all()
@@ -13,4 +13,4 @@ def home_page(request):
     context={
         "leads" : leads
     }
-    return render(request, "second_page.html", context)
+    return render(request, "leads/lead_list.html", context)

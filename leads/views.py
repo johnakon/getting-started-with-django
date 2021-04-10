@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # import the leads model
 from .models import Lead
+from .forms import LeadForm
 
 
 # function based views
@@ -21,10 +22,21 @@ def lead_list(request):
 # leads details
 # a primary key is also passed
 def lead_detail(request, pk):
-    print(pk)
+    # print(pk)
     # use pk to retrieve specific row using object manager
     lead = Lead.objects.get(id=pk)
-    print(lead)
-    return HttpResponse("Here is the leads view")
+    # print(lead)
+    context = {
+        "lead" : lead
+    }
+    return render(request, "leads/lead_detail.html", context)
 
-    
+
+# creating a lead from a form
+def lead_create(request):
+
+    print(request.POST)
+    context = {
+        "form" : LeadForm
+    }
+    return render(request, "leads/lead_create.html", context)

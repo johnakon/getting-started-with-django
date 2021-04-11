@@ -1,7 +1,7 @@
 
 # Getting started with Django
 
-This is a tutorial I am following -  "Getting Started With Django", found on YouTube and JustDjango
+Building a CRM - JustDjango
 
 ---
 

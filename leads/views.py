@@ -73,7 +73,19 @@ def lead_update(request, pk):
         "form" : form,
         "lead" : lead
     }
-    return render(request, "leads/lead_create.html", context)
+    return render(request, "leads/lead_update.html", context)
+
+
+
+# deleting a lead
+def lead_delete(request, pk):
+    lead = Lead.objects.get(id=pk)  
+    lead.delete()
+    print("lead has been deleted")
+    form = LeadModelForm(instance=lead)
+
+    return redirect("/leads")
+
 
 # updating the lead
 # def lead_update(request, pk):

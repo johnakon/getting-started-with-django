@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', home_page)
     # handle requests to specific path file
-    path('leads/', include('leads.urls', namespace=""))
+    path('leads/', include('leads.urls', namespace="leads"))
 ]

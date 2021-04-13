@@ -1,8 +1,17 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 from .models import Lead, Agent
 from .forms import LeadForm, LeadModelForm
 
+
+# CRUS OPERATIONS
+
+
+
+# landing page as class view
+class LandingPageView(TemplateView) :
+    template_name = "landing.html"
 
 # landing page
 def landing_page(request):
@@ -11,8 +20,6 @@ def landing_page(request):
 
 # lead list
 def lead_list(request):
-
-    # fetch all leads and store in a variable leads
     leads = Lead.objects.all()
 
     context={
@@ -22,11 +29,8 @@ def lead_list(request):
 
 
 # leads details
-# a primary key is also passed
 def lead_detail(request, pk):
-    # print(pk)
     lead = Lead.objects.get(id=pk)
-    # print(lead)
     context = {
         "lead" : lead
     }
@@ -35,18 +39,13 @@ def lead_detail(request, pk):
 
 # creating a lead from 
 def lead_create(request):
-    form = LeadModelForm()  # empty form instantiation
-    # print(request.POST)
-
-    # check if method is POST 
+    form = LeadModelForm() 
     if request.method == "POST":
         print("Receiving a post request")
         form = LeadModelForm(request.POST)
-        # check if form is valid
         if form.is_valid():
             print("form is valid")
             form.save()
-            # redirect
             return redirect("/leads")
 
 

@@ -1,11 +1,15 @@
 from django.urls import path
-from .views import  lead_list, lead_detail, lead_create, lead_update, lead_delete
+from .views import  (
+    lead_list, lead_detail, lead_create, lead_update, lead_delete, 
+    LeadListView
+)
 
 app_name = "leads"
 
 # create a urlpattern list
 urlpatterns =[
-    path('', lead_list, name='lead-list'), 
+    # path('', lead_list, name='lead-list'), 
+    path('', LeadListView.as_view(), name='lead-list'),
     # path('create/', lead_create),
     # use pk to uniquely identify a lead
     path('<int:pk>/', lead_detail, name='lead-detail'),

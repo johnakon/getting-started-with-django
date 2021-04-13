@@ -92,29 +92,6 @@ class LeadUpdateView(UpdateView):
         # return "/leads"  
         return reverse("leads:lead-list")
 
-# updating using LeadModelForm
-def lead_update(request, pk):
-    lead = Lead.objects.get(id=pk)  
-    # update specific instance of Model form
-
-    form = LeadModelForm(instance=lead)
-     
-    if request.method == "POST":
-        # pre-populates the form with existing data
-        form = LeadModelForm(request.POST, instance=lead)
-        if form.is_valid():
-            print("form is valid")
-            form.save()
-
-            return redirect("/leads")
-
-
-    context = {
-        "form" : form,
-        "lead" : lead
-    }
-    return render(request, "leads/lead_update.html", context)
-
 
 
 # delete view as a class using DEleteView

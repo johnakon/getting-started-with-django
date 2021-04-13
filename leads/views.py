@@ -5,7 +5,7 @@ from .models import Lead, Agent
 from .forms import LeadForm, LeadModelForm
 
 
-# CRUS OPERATIONS
+# CRUD OPERATIONS - class based views
 
 
 
@@ -39,6 +39,7 @@ class LeadCreateView(CreateView):
         return reverse("leads:lead-list")
 
 
+
 # update view as a class using UpdateView
 class LeadUpdateView(UpdateView):
     template_name = "leads/lead_update.html"
@@ -60,4 +61,3 @@ class LeadDeleteView(DeleteView):
     def get_success_url(self):  
         # return "/leads"  
         return reverse("leads:lead-list")
-

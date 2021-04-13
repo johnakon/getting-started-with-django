@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from leads.views import landing_page, LandingPageView, LeadListView
+# from leads.views import landing_page, LandingPageView, LeadListView
+from leads.views import LandingPageView, LeadListView
+
 
 # from leads.views import home_page
 

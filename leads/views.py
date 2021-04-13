@@ -127,11 +127,3 @@ class LeadDeleteView(DeleteView):
         # return "/leads"  
         return reverse("leads:lead-list")
 
-# deleting a lead
-def lead_delete(request, pk):
-    lead = Lead.objects.get(id=pk)  
-    lead.delete()
-    print("lead has been deleted")
-    form = LeadModelForm(instance=lead)
-
-    return redirect("/leads")
